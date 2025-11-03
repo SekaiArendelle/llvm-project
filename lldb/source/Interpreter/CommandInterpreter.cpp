@@ -3600,7 +3600,7 @@ CommandInterpreterRunResult CommandInterpreter::RunCommandInterpreter(
     HostThread new_io_handler_thread(Host::GetCurrentThread());
     HostThread old_io_handler_thread =
         m_debugger.SetIOHandlerThread(new_io_handler_thread);
-    m_debugger.RunIOHandlers();
+    m_debugger.RunIOHandlers(); // ME NOTE: Entering to the debugged process
     m_debugger.SetIOHandlerThread(old_io_handler_thread);
 
     if (options.GetAutoHandleEvents())
