@@ -94,7 +94,7 @@ constexpr bool j(bool b) {
 
 static_assert(i()); // expected-error {{not an integral constant expression}} expected-note {{in call to}}
 static_assert(j(true));
-static_assert(j(false)); // expected-error {{not an integral constant expression}} expected-note {{in call to}}
+static_assert(j(false)); // expected-error {{not an integral constant expression}} expected-note {{in call to}} expected-note {{assumption evaluated to false}}
 static_assert(S<true>{}.g<char>());
 static_assert(S<false>{}.g<A>()); // expected-error {{not an integral constant expression}} expected-note {{in call to}}
 
