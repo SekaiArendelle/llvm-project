@@ -1,16 +1,7 @@
 // RUN: %clang_analyze_cc1 -std=c++23 -analyzer-checker=cplusplus.Move \
 // RUN:   -analyzer-output=text -verify %s
 
-namespace std {
-template <class T> struct remove_reference { using type = T; };
-template <class T> struct remove_reference<T &> { using type = T; };
-template <class T> struct remove_reference<T &&> { using type = T; };
-
-template <class T>
-typename remove_reference<T>::type &&move(T &&value) {
-  return static_cast<typename remove_reference<T>::type &&>(value);
-}
-} // namespace std
+#include "Inputs/system-header-simulator-cxx.h"
 
 struct Owner {
   Owner() = default;
